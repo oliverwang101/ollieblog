@@ -1,0 +1,52 @@
+2018-08-06 18:37:52,387 ERROR: Exception on /edit_post/13 [GET] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/oliverwang/microblog/app/main/routes.py", line 110, in edit_post
+    if edit_form.delete.data:
+AttributeError: 'EditPostForm' object has no attribute 'delete'
+2018-08-06 18:38:19,724 ERROR: Exception on /edit_post/5 [GET] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/oliverwang/microblog/app/main/routes.py", line 110, in edit_post
+    if edit_form.delete.data:
+AttributeError: 'EditPostForm' object has no attribute 'delete'
+2018-08-06 18:39:16,183 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
+2018-08-06 18:39:20,473 ERROR: Exception on /edit_post/17 [GET] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/oliverwang/microblog/app/main/routes.py", line 110, in edit_post
+    if edit_form.delete.data:
+AttributeError: 'EditPostForm' object has no attribute 'delete'

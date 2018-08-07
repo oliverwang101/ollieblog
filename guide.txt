@@ -1,0 +1,65 @@
+]DATABASE
+# make updates to db
+
+flask db migrate -m "comment"
+flask db upgrade
+
+# to revert back
+flask db downgrade
+
+
+# start virtual env
+source /myvenv/bin/activate
+
+# export app
+export FLASK_APP=microblog.py
+
+
+#run web app
+flask run
+
+
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+
+learned:
+
+ERROR HANDLING:
+
+3. Logging to a File
+	- use RotatingFileHandler - opens stream for logging, rotates to make sure doesnt grow too large (last 10)
+	- write to microblog.log, in logs dir
+	- logging categories: debug, warning, critical, info, error
+
+FEATURE: FOLLOWING
+	- set up database for users that are followed
+	- make sure that relationship of following and unfollowing do not overlap
+	- including posts of all followed users
+	- including own posts
+	- write test cases
+
+4. Added pagination w/ posts of followed users
+	- eg. 'New posts>>' '<<olderposts'
+
+
+Configuring new stuff:
+1. Initialize new config in config.py
+
+
+
+SECRET_KEY=a-really-long-and-unique-key-that-nobody-knows
+MAIL_SERVER=localhost
+MAIL_PORT=25
+MS_TRANSLATOR_KEY=<your-translator-key-here>
+
+
+Term
+$ sudo apt-get -y update
+$ sudo apt-get -y install python3 python3-venv python3-dev
+$ sudo apt-get -y install mysql-server postfix supervisor nginx git
+
+SECRET_KEY=118b9df38ace441bb4fdc31d5dd18a2a
+MAIL_SERVER=localhost
+MAIL_PORT=25
+DATABASE_URL=mysql+pymysql://microblog:<db-password>@localhost:3306/microblog
