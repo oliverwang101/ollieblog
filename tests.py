@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# tests for users creating, following, setup etc.
 from datetime import datetime, timedelta
 import unittest
 from app import create_app, db
