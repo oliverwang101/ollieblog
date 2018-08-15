@@ -27,3 +27,85 @@ Traceback (most recent call last):
 werkzeug.routing.BuildError: Could not build url for endpoint 'main.edit_post'. Did you forget to specify values ['id']?
 2018-08-06 21:11:25,414 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
 2018-08-13 23:56:58,479 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
+2018-08-14 19:04:59,270 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:85]
+2018-08-14 19:05:23,147 ERROR: Exception on / [POST] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/util/connection.py", line 79, in create_connection
+    raise err
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/util/connection.py", line 69, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/connection/http_urllib3.py", line 171, in perform_request
+    response = self.pool.urlopen(method, url, body, retries=False, headers=request_headers, **kw)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/util/retry.py", line 343, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/packages/six.py", line 686, in reraise
+    raise value
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/Cellar/python/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/Cellar/python/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/Cellar/python/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/Cellar/python/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py", line 1026, in _send_output
+    self.send(msg)
+  File "/usr/local/Cellar/python/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py", line 964, in send
+    self.connect()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x10f354b38>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/oliverwang/microblog/app/main/routes.py", line 35, in index
+    db.session.commit()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 153, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 943, in commit
+    self.transaction.commit()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 474, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/event/attr.py", line 246, in __call__
+    fn(*args, **kw)
+  File "/Users/oliverwang/microblog/app/models.py", line 120, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/oliverwang/microblog/app/search.py", line 13, in add_to_index
+    body=payload)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/client/utils.py", line 76, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/client/__init__.py", line 319, in index
+    _make_path(index, doc_type, id), params=params, body=body)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/transport.py", line 318, in perform_request
+    status, headers_response, data = connection.perform_request(method, url, params, body, headers=headers, ignore=ignore, timeout=timeout)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/connection/http_urllib3.py", line 180, in perform_request
+    raise ConnectionError('N/A', str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x10f354b38>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x10f354b38>: Failed to establish a new connection: [Errno 61] Connection refused)
