@@ -26,3 +26,4 @@ Traceback (most recent call last):
     raise BuildError(endpoint, values, method, self)
 werkzeug.routing.BuildError: Could not build url for endpoint 'main.edit_post'. Did you forget to specify values ['id']?
 2018-08-06 21:11:25,414 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
+2018-08-13 23:56:58,479 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
