@@ -1,4 +1,4 @@
-2018-08-06 18:23:03,630 ERROR: Exception on /edit_post/19 [POST] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-08-06 18:32:12,590 ERROR: Exception on /edit_post/17 [POST] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connection.py", line 171, in _new_conn
     (self._dns_host, self.port), self.timeout, **extra_kw)
@@ -37,7 +37,7 @@ Traceback (most recent call last):
     conn = self._new_conn()
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connection.py", line 180, in _new_conn
     self, "Failed to establish a new connection: %s" % e)
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x109221978>: Failed to establish a new connection: [Errno 61] Connection refused
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x10a94a3c8>: Failed to establish a new connection: [Errno 61] Connection refused
 
 During handling of the above exception, another exception occurred:
 
@@ -76,5 +76,39 @@ Traceback (most recent call last):
     status, headers_response, data = connection.perform_request(method, url, params, body, headers=headers, ignore=ignore, timeout=timeout)
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/connection/http_urllib3.py", line 180, in perform_request
     raise ConnectionError('N/A', str(e), e)
-elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x109221978>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x109221978>: Failed to establish a new connection: [Errno 61] Connection refused)
-2018-08-06 18:31:53,622 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x10a94a3c8>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x10a94a3c8>: Failed to establish a new connection: [Errno 61] Connection refused)
+2018-08-06 18:37:23,290 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
+2018-08-06 18:37:29,484 ERROR: Exception on /edit_post/17 [POST] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/oliverwang/microblog/app/main/routes.py", line 110, in edit_post
+    if edit_form.delete.data:
+AttributeError: 'EditPostForm' object has no attribute 'delete'
+2018-08-06 18:37:42,107 ERROR: Exception on /edit_post/17 [GET] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/oliverwang/microblog/app/main/routes.py", line 110, in edit_post
+    if edit_form.delete.data:
+AttributeError: 'EditPostForm' object has no attribute 'delete'

@@ -1,11 +1,4 @@
-2018-08-06 18:03:47,594 ERROR: Exception on /auth/login [POST] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/util/_collections.py", line 999, in __call__
-    return self.registry[key]
-KeyError: 123145437700096
-
-During handling of the above exception, another exception occurred:
-
+2018-08-06 18:07:20,736 ERROR: Exception on /edit_post/16 [GET] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -19,33 +12,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/oliverwang/microblog/app/auth/routes.py", line 19, in login
-    user = User.query.filter_by(username=form.username.data).first()
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 514, in __get__
-    return type.query_class(mapper, session=self.sa.session())
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 74, in __call__
-    return self.registry()
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/util/_collections.py", line 1001, in __call__
-    return self.registry.setdefault(key, self.createfunc())
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2950, in __call__
-    return self.class_(**local_kw)
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 143, in __init__
-    bind = options.pop('bind', None) or db.engine
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 877, in engine
-    return self.get_engine()
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 896, in get_engine
-    return connector.get_engine()
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 559, in get_engine
-    self._engine = rv = sqlalchemy.create_engine(info, **options)
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/engine/__init__.py", line 424, in create_engine
-    return strategy.create(*args, **kwargs)
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/engine/strategies.py", line 81, in create
-    dbapi = dialect_cls.dbapi(**dbapi_args)
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/dialects/mysql/pymysql.py", line 62, in dbapi
-    return __import__('pymysql')
-ModuleNotFoundError: No module named 'pymysql'
-2018-08-06 18:05:07,045 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
-2018-08-06 18:05:34,580 ERROR: Exception on /edit_post/20 [POST] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/Users/oliverwang/microblog/app/main/routes.py", line 109, in edit_post
+    edit_form = EditPostForm(post.body)
+AttributeError: 'NoneType' object has no attribute 'body'
+2018-08-06 18:07:39,746 ERROR: Exception on /edit_post/17 [POST] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connection.py", line 171, in _new_conn
     (self._dns_host, self.port), self.timeout, **extra_kw)
@@ -84,7 +54,7 @@ Traceback (most recent call last):
     conn = self._new_conn()
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connection.py", line 180, in _new_conn
     self, "Failed to establish a new connection: %s" % e)
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1070d2080>: Failed to establish a new connection: [Errno 61] Connection refused
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x10841fa58>: Failed to establish a new connection: [Errno 61] Connection refused
 
 During handling of the above exception, another exception occurred:
 
@@ -123,6 +93,8 @@ Traceback (most recent call last):
     status, headers_response, data = connection.perform_request(method, url, params, body, headers=headers, ignore=ignore, timeout=timeout)
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/connection/http_urllib3.py", line 180, in perform_request
     raise ConnectionError('N/A', str(e), e)
-elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x1070d2080>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x1070d2080>: Failed to establish a new connection: [Errno 61] Connection refused)
-2018-08-06 18:06:44,154 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
-2018-08-06 18:07:19,420 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x10841fa58>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x10841fa58>: Failed to establish a new connection: [Errno 61] Connection refused)
+2018-08-06 18:13:22,649 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
+2018-08-06 18:14:08,911 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
+2018-08-06 18:14:47,041 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
+2018-08-06 18:20:44,117 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]

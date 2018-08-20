@@ -1,4 +1,4 @@
-2018-08-06 18:21:13,243 ERROR: Exception on /delete/18 [GET] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
+2018-08-06 18:23:03,630 ERROR: Exception on /edit_post/19 [POST] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connection.py", line 171, in _new_conn
     (self._dns_host, self.port), self.timeout, **extra_kw)
@@ -37,7 +37,7 @@ Traceback (most recent call last):
     conn = self._new_conn()
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/urllib3/connection.py", line 180, in _new_conn
     self, "Failed to establish a new connection: %s" % e)
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x109ece9e8>: Failed to establish a new connection: [Errno 61] Connection refused
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x109221978>: Failed to establish a new connection: [Errno 61] Connection refused
 
 During handling of the above exception, another exception occurred:
 
@@ -54,7 +54,7 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/oliverwang/microblog/app/main/routes.py", line 126, in delete_post
+  File "/Users/oliverwang/microblog/app/main/routes.py", line 114, in edit_post
     db.session.commit()
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 153, in do
     return getattr(self.registry(), name)(*args, **kwargs)
@@ -64,51 +64,17 @@ Traceback (most recent call last):
     self.session.dispatch.after_commit(self.session)
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/sqlalchemy/event/attr.py", line 246, in __call__
     fn(*args, **kw)
-  File "/Users/oliverwang/microblog/app/models.py", line 126, in after_commit
-    remove_from_index(obj.__tablename__, obj)
-  File "/Users/oliverwang/microblog/app/search.py", line 17, in remove_from_index
-    current_app.elasticsearch.delete(index=index, doc_type=index, id=model.id)
+  File "/Users/oliverwang/microblog/app/models.py", line 123, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/oliverwang/microblog/app/search.py", line 13, in add_to_index
+    body=payload)
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/client/utils.py", line 76, in _wrapped
     return func(*args, params=params, **kwargs)
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/client/__init__.py", line 1065, in delete
-    doc_type, id), params=params)
+  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/client/__init__.py", line 319, in index
+    _make_path(index, doc_type, id), params=params, body=body)
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/transport.py", line 318, in perform_request
     status, headers_response, data = connection.perform_request(method, url, params, body, headers=headers, ignore=ignore, timeout=timeout)
   File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/elasticsearch/connection/http_urllib3.py", line 180, in perform_request
     raise ConnectionError('N/A', str(e), e)
-elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x109ece9e8>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x109ece9e8>: Failed to establish a new connection: [Errno 61] Connection refused)
-2018-08-06 18:22:00,493 ERROR: Exception on /edit_post/18 [GET] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/oliverwang/microblog/app/main/routes.py", line 109, in edit_post
-    edit_form = EditPostForm(post.body)
-AttributeError: 'NoneType' object has no attribute 'body'
-2018-08-06 18:22:37,642 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
-2018-08-06 18:22:44,280 ERROR: Exception on /edit_post/18 [GET] [in /Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/oliverwang/microblog/myvenv/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/oliverwang/microblog/app/main/routes.py", line 109, in edit_post
-    edit_form = EditPostForm(post.body)
-AttributeError: 'NoneType' object has no attribute 'body'
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x109221978>: Failed to establish a new connection: [Errno 61] Connection refused) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x109221978>: Failed to establish a new connection: [Errno 61] Connection refused)
+2018-08-06 18:31:53,622 INFO: Microblog startup [in /Users/oliverwang/microblog/app/__init__.py:80]
